@@ -1,178 +1,69 @@
-# Hack Club Theme Starter
+# Hack Club RTP
 
-A sample [Next.js] project for getting started with [MDX], [Theme UI], & [Hack Club Theme].
+The official website for **Hack Club RTP**, a high school student-led coding club meeting at **Eva Perry Regional Library** in Apex, NC (serving the Research Triangle Park area: Apex, Cary, Morrisville, Raleigh, Durham, Chapel Hill).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fhackclub%2Ftheme-starter&repo-name=theme-project)
+Built with [Next.js](https://nextjs.org), [Theme UI](https://theme-ui.com), and the official [Hack Club Theme](https://github.com/hackclub/theme). Styled after the iconic [hackclub.com](https://hackclub.com) aesthetic.
 
-[next.js]: https://nextjs.org
-[mdx]: https://mdxjs.com
-[theme ui]: https://theme-ui.com
-[hack club theme]: https://github.com/hackclub/theme
+---
 
-## Usage
+## Meeting Schedule
 
-1. Import this repo to your coding environment of choice. Download it, `git clone`, or use the GitHub import on Glitch/Repl.it.
-2. `yarn` to install dependencies.
-3. `yarn dev` to start your server.
-4. Start adding your own pages & components in their respective directories.
+- **Monthly In-Person**: Eva Perry Regional Library (`2100 Shepherd’s Vineyard Dr, Apex, NC 27502`).
+  - Hands-on maker sessions, project demos, and hardware tinkering.
+- **Weekly Online**: Virtual hack sessions & workshops.
+- **Interest List**: Sign up at [https://forms.gle/NvaAfaiM31Kk8TKx5](https://forms.gle/NvaAfaiM31Kk8TKx5) to receive updates on upcoming kickoff dates and room bookings.
 
-## Configuration
+---
 
-### Theme switcher
+## Local Development
 
-We’ve included an example theme switcher component at `components/color-switcher.js`,
-which is included on every page through its inclusion in `pages/_app.js`.
-Feel free to change it.
+### Prerequisites
+- [Node.js](https://nodejs.org) (v18 or newer recommended)
+- [Yarn](https://yarnpkg.com) or [npm](https://npmjs.com)
 
-### Hack Club fonts
+### Quick Start
+```bash
+# 1. Clone the repository
+git clone https://github.com/aarsh270/forgeRTP.git
+cd forgeRTP
 
-If you’re making a Hack Club HQ project, you’re allowed to use Hack Club’s font,
-[Phantom Sans](https://www.futurefonts.xyz/phantom-foundry/phantom-sans).
-To load it, simply uncomment the `import '@hackclub/theme/fonts/reg-bold.css'`
-line in `_app.js`.
+# 2. Install dependencies
+yarn
+# (or: npm install)
 
-### Custom theme
-
-By default, the raw [Hack Club Theme](https://theme.hackclub.com) will be used.
-If you’d like to edit the theme, we recommend making a theme file (perhaps at
-`lib/theme.js`) along these lines:
-
-```js
-import base from '@hackclub/theme'
-
-const theme = base
-
-// theme.fontSizes = […]
-// theme.fonts.heading = ''
-
-export default theme
+# 3. Start local development server
+yarn dev
+# (or: npm run dev)
 ```
 
-### Running at another port
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the site.
 
-Super easy: `yarn dev -p 5000`
+---
 
-### Adding meta tags
+## Project Structure
 
-These template includes [@hackclub/meta](https://github.com/hackclub/theme/tree/main/packages/meta)
-for adding meta tags to Hack Club HQ sites. To set default meta tags across all pages,
-add the following to `pages/_app.js`:
+- `pages/index.js` — Main landing page featuring the animated rainbow hero, email capsule form, airmail postcard, meeting details, and side sticker decorations.
+- `pages/_app.js` — Global app wrapper with Phantom Sans `@font-face` definitions and Theme UI provider.
+- `pages/_document.js` — Custom Next.js HTML document with theme color mode initializer.
+- `components/nav.js` — Navigation bar with Hack Club ribbon logo, smooth anchor links, and theme toggle.
+- `components/color-switcher.js` — Light/dark theme toggle button.
+- `components/footer.js` — Chapter footer with Hack Club 501(c)(3) disclosure, links to Hack Club Slack, and Code of Conduct.
+- `lib/theme.js` — Theme UI configuration extending `@hackclub/theme`.
 
-```js
-// import Head from 'next/head'
-// import Meta from '@hackclub/meta'
-
-<Meta
-  as={Head}
-  name="Hack Club" // site name
-  title="Hackathons" // page title
-  description="List of upcoming high school hackathons" // page description
-  image="https://hackathons.hackclub.com/card.png" // large summary card image URL
-  color="#ec3750" // theme color
-  manifest="/site.webmanifest" // link to site manifest
-/>
-```
-
-If you’re not making a site for HQ, don’t use `@hackclub/meta`, since it adds
-Hack Club’s favicons & info. Instead, we recommend making your own component,
-perhaps at `components/meta.js`.
-
-<details>
-
-<summary>Example code</summary>
-
-```js
-import Head from 'next/head'
-import theme from '@hackclub/theme' // or '../lib/theme'
-
-export default ({
-  name = 'Your Company',
-  title = 'Your Project',
-  description = '',
-  image = 'https://yourproject.vercel.app/card.png',
-  url = 'https://yourproject.vercel.app/'
-}) => (
-  <Head>
-    <title>{title}</title>
-    <meta property="og:title" content={title} />
-    <meta name="twitter:title" content={title} />
-    <meta name="og:url" content={url} />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={name} />
-    <meta name="description" content={description} />
-    <meta property="og:description" content={description} />
-    <meta name="twitter:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={image} />
-    <meta name="msapplication-TileColor" content={theme.colors.primary} />
-    <meta name="theme-color" content={theme.colors.primary} />
-  </Head>
-)
-```
-
-</details>
-
-### Adding analytics
-
-Hack Club HQ uses (& loves) [Fathom Analytics](https://usefathom.com/ref/NXBJA2)
-for simple, privacy-focused analytics. ([Check out our site’s analytics here.](https://app.usefathom.com/share/ogimjefa/hackclub.com))
-
-To add Fathom to your project, `yarn add fathom-client`, then you’ll need to
-load it appropriately in `pages/_app.js`. The script is located at
-<https://aardvark.hackclub.com/script.js>.
-
-<details>
-
-<summary>Example file with Fathom</summary>
-
-```js
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
-import NextApp from 'next/app'
-import Head from 'next/head'
-
-import Meta from '@hackclub/meta'
-import '@hackclub/theme/fonts/reg-bold.css'
-import theme from '../lib/theme'
-import { ThemeProvider } from 'theme-ui'
-import * as Fathom from 'fathom-client'
-
-const App = ({ Component, pageProps }) => {
-  const router = useRouter()
-
-  useEffect(() => {
-    Fathom.load('YOURCODE', {
-      includedDomains: ['hackclub.com'],
-      url: 'https://aardvark.hackclub.com/script.js'
-    })
-    const onRouteChangeComplete = () => Fathom.trackPageview()
-    router.events.on('routeChangeComplete', onRouteChangeComplete)
-    return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete)
-    }
-  }, [])
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Meta as={Head} />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  )
-}
-
-export default App
-```
-
-</details>
+---
 
 ## Deployment
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fhackclub%2Ftheme-starter&repo-name=theme-project)
+Deploy with one click using [Vercel](https://vercel.com):
 
-We recommend using [Vercel](https://vercel.com) for deployment. It requires no
-configuration, is totally free for personal projects, and supports all the features
-of Next.js with the best performance. Refer to [their documentation](https://vercel.com/docs#deploy-an-existing-project)
-for more details.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Faarsh270%2FforgeRTP)
 
-You can also deploy your site to [Netlify](https://netlify.com), which is also free. Refer to [their documentation](https://docs.netlify.com/configure-builds/common-configurations/#next-js) on the necessary configuration.
+1. Import this repository on [Vercel](https://vercel.com).
+2. Use default build command (`next build`) and output directory.
+3. Deploy! Every push to `main` will automatically trigger a new deployment.
+
+---
+
+## Community & Code of Conduct
+
+Hack Club RTP is part of the global [Hack Club](https://hackclub.com) 501(c)(3) nonprofit network. All members, events, and communications follow the [Hack Club Code of Conduct](https://hackclub.com/conduct).
