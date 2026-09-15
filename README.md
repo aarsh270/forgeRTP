@@ -4,6 +4,8 @@ The official website for **Hack Club RTP**, a high school student-led coding clu
 
 Built with [Next.js](https://nextjs.org), [Theme UI](https://theme-ui.com), and the official [Hack Club Theme](https://github.com/hackclub/theme). Styled after the iconic [hackclub.com](https://hackclub.com) aesthetic.
 
+🌐 **Live Website**: [https://forge-rtp.vercel.app](https://forge-rtp.vercel.app)
+
 ---
 
 ## Meeting Schedule
