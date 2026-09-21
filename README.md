@@ -1,6 +1,7 @@
 # Hack Club RTP
 
 The official website for **Hack Club RTP**, a high school student-led coding club meeting at **Eva Perry Regional Library** in Apex, NC (serving the Research Triangle Park area: Apex, Cary, Morrisville, Raleigh, Durham, Chapel Hill).
+Founded by Aarsh Patel
 
 Built with [Next.js](https://nextjs.org), [Theme UI](https://theme-ui.com), and the official [Hack Club Theme](https://github.com/hackclub/theme). Styled after the iconic [hackclub.com](https://hackclub.com) aesthetic.
 

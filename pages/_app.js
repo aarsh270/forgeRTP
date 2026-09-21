@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { ThemeUIProvider } from 'theme-ui'
 import theme from '../lib/theme'
+import { Analytics } from '@vercel/analytics/react'
 
 export default function App({ Component, pageProps }) {
   return (
@@ -69,6 +70,7 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <Component {...pageProps} />
+      <Analytics />
     </ThemeUIProvider>
   )
 }
